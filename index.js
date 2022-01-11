@@ -64,6 +64,21 @@ function removeRow() {
 
 }
 // remove columns from the grid
+function removeCol() {
+
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+    // parentNode.removeChild(childNode);
+
+
+    let currentCol = gridContainer[0].getElementsByClassName("col")[colLength - 1]
+
+    gridContainer[0].removeChild(currentCol);
+
+
+}
+
 // select a color from a dropdown menu of colors
 // click on a single cell, changing its color to the currently selected color
 // fill all uncolored cells with the currently selected color
