@@ -1,15 +1,28 @@
 let col = document.getElementsByClassName('col')
+let gridContainer = document.getElementsByClassName('grid-container')
 
 function addRow() {
     let newRow = document.createElement("div")
     newRow.className = "row"
     col[0].append(newRow)
-
 }
 
 
 
 // add columns to the grid
+function addCol() {
+    if (document.getElementsByClassName("col") == 0) {
+        let newCol = document.createElement("div")
+        newCol.className = "col"
+        gridContainer[0].appendChild("newCol")
+    } else {
+        let newCol = col[0].cloneNode(true);
+        gridContainer[0].appendChild(newCol)
+
+
+    }
+
+}
 // remove rows from the grid
 // remove columns from the grid
 // select a color from a dropdown menu of colors
