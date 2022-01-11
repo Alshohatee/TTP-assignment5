@@ -6,8 +6,8 @@ let row = document.getElementsByClassName('row')
 
 
 
-
 function makeRowMatch() {
+
     let cols = gridContainer[0].getElementsByClassName("col")
         // how many columns
     let colLength = cols.length;
@@ -34,6 +34,7 @@ function addRow() {
     makeRowMatch()
 }
 
+// add columns to the grid
 function addCol() {
     if (document.getElementsByClassName("col") == 0) {
         let newCol = document.createElement("div")
@@ -46,8 +47,22 @@ function addCol() {
 
     }
 }
-// add columns to the grid
+
 // remove rows from the grid
+function removeRow() {
+
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+    // parentNode.removeChild(childNode);
+    for (let j = 0; j < colLength; j++) {
+
+        let currentCol = gridContainer[0].getElementsByClassName("col")[j]
+
+        currentCol.removeChild(currentCol.getElementsByClassName("row")[0]);
+    }
+
+}
 // remove columns from the grid
 // select a color from a dropdown menu of colors
 // click on a single cell, changing its color to the currently selected color
