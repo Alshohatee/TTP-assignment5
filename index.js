@@ -1,15 +1,39 @@
-let col = document.getElementsByClassName('col')
 let gridContainer = document.getElementsByClassName('grid-container')
+let col = document.getElementsByClassName('col')
+    // add rows to the grid
+let row = document.getElementsByClassName('row')
+    // create new row
+
+
+
+
+function makeRowMatch() {
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+
+    // length of Rows in first column
+    let lengthRowInFirstCol = gridContainer[0].getElementsByClassName("col")[0].childElementCount
+
+    // loop through cols
+    for (let j = 0; j < colLength; j++) {
+        // add row depend of the first row
+        for (let i = cols[j].childElementCount; i < lengthRowInFirstCol; i++) {
+
+            let newRow = document.createElement("div")
+            newRow.className = "row"
+            gridContainer[0].getElementsByClassName("col")[j].append(newRow)
+        }
+    }
+}
 
 function addRow() {
     let newRow = document.createElement("div")
     newRow.className = "row"
     col[0].append(newRow)
+    makeRowMatch()
 }
 
-
-
-// add columns to the grid
 function addCol() {
     if (document.getElementsByClassName("col") == 0) {
         let newCol = document.createElement("div")
@@ -21,8 +45,8 @@ function addCol() {
 
 
     }
-
 }
+// add columns to the grid
 // remove rows from the grid
 // remove columns from the grid
 // select a color from a dropdown menu of colors
