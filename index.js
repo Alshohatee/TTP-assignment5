@@ -140,4 +140,16 @@ function fillCellWillSelectedColor() {
 
 }
 // clear all cells / restore all cells to their original / initial color
+function clearAllCells() {
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+
+
+    for (let j = colLength - 1; j > 0; j--) {
+        document.getElementsByClassName("col")[j].remove()
+
+    }
+    UnfillcoloredCells()
+}
 // click and hold(mouseover) from a single cell(start) to a different cell(end) such that all affected / hovered - over cells from start to end change to the currently selected color
