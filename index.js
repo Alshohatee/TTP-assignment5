@@ -143,15 +143,31 @@ function UnfillcoloredCells() {
     }
 }
 // fill all cells with the currently selected color
-function fillCellWillSelectedColor() {
+function fillCellWithSelectedColor() {
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+
+    // length of Rows in first column
     let lengthRowInFirstCol = gridContainer[0].getElementsByClassName("col")[0].childElementCount
-    for (let j = 0; j < lengthRowInFirstCol; j++) {
-        document.getElementsByClassName("row")[j].setAttribute("style", `background-color: ${colorSelector.value};`)
+
+
+    // loop through cols
+    for (let j = 0; j < colLength; j++) {
+        // add row depend of the first row
+        for (let i = 0; i < lengthRowInFirstCol; i++) {
+
+            document.getElementsByClassName("col")[j].getElementsByClassName("row")[i].setAttribute("style", `background-color: ${colorSelector.value};`)
+
+        }
 
     }
 
+
 }
 // clear all cells / restore all cells to their original / initial color
+document.getElementsByClassName("row")[j].setAttribute("style", `background-color: ${colorSelector.value};`)
+
 function clearAllCells() {
     let cols = gridContainer[0].getElementsByClassName("col")
         // how many columns
