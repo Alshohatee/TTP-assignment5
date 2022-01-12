@@ -123,12 +123,24 @@ function setId() {
 
 // fill all uncolored cells with the currently selected color
 function UnfillcoloredCells() {
+    let cols = gridContainer[0].getElementsByClassName("col")
+        // how many columns
+    let colLength = cols.length;
+
+    // length of Rows in first column
     let lengthRowInFirstCol = gridContainer[0].getElementsByClassName("col")[0].childElementCount
-    for (let j = 0; j < lengthRowInFirstCol; j++) {
-        document.getElementsByClassName("row")[j].setAttribute("style", "background-color: white;")
+
+
+    // loop through cols
+    for (let j = 0; j < colLength; j++) {
+        // add row depend of the first row
+        for (let i = 0; i < lengthRowInFirstCol; i++) {
+
+            document.getElementsByClassName("col")[j].getElementsByClassName("row")[i].setAttribute("style", "background-color: white;")
+
+        }
 
     }
-
 }
 // fill all cells with the currently selected color
 function fillCellWillSelectedColor() {
