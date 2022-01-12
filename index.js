@@ -3,7 +3,8 @@ let col = document.getElementsByClassName('col')
     // add rows to the grid
 let row = document.getElementsByClassName('row')
     // create new row
-
+    // default
+let selectedColor = 'red'
 
 
 function makeRowMatch() {
@@ -15,6 +16,7 @@ function makeRowMatch() {
     // length of Rows in first column
     let lengthRowInFirstCol = gridContainer[0].getElementsByClassName("col")[0].childElementCount
 
+
     // loop through cols
     for (let j = 0; j < colLength; j++) {
         // add row depend of the first row
@@ -25,13 +27,16 @@ function makeRowMatch() {
             gridContainer[0].getElementsByClassName("col")[j].append(newRow)
         }
     }
+    setId()
 }
 
 function addRow() {
     let newRow = document.createElement("div")
     newRow.className = "row"
+    newRow.setAttribute("onclick", "changeColor(event)")
     col[0].append(newRow)
     makeRowMatch()
+
 }
 
 // add columns to the grid
@@ -70,8 +75,6 @@ function removeCol() {
         // how many columns
     let colLength = cols.length;
     // parentNode.removeChild(childNode);
-
-
     let currentCol = gridContainer[0].getElementsByClassName("col")[colLength - 1]
 
     gridContainer[0].removeChild(currentCol);
@@ -79,8 +82,45 @@ function removeCol() {
 
 }
 
+
 // select a color from a dropdown menu of colors
 // click on a single cell, changing its color to the currently selected color
+let colorSelector = document.getElementById("colorSelector")
+
+colorSelector.addEventListener("change", (event) => {
+    selectedColor = colorSelector.value
+        // console.log(selectedColor);
+
+})
+
+function changeColor(e) {
+    selectedColor = colorSelector.value
+    e.target.style.background = selectedColor
+
+}
+let rowDivs = document.querySelectorAll("div.row")
+for (let i = 0; i < rowDivs.length; i++) {
+    rowDivs[i].addEventListener("click", function() {
+
+        if (document.getElementsByClassName("row")[0].classList.contains('active'))
+
+            document.getElementsByClassName("row")[0].classList.toggle('active');
+        this.className += " active";
+        this.style.background = selectedColor
+
+
+    });
+}
+
+function setId() {
+    var counter = 0
+    Array(document.getElementsByClassName("row")).map((element) => {
+        element[counter].setAttribute("id", counter)
+        counter += 1
+        console.log(element[counter])
+    }, false)
+}
+
 // fill all uncolored cells with the currently selected color
 // fill all cells with the currently selected color
 // clear all cells / restore all cells to their original / initial color
